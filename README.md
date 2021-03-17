@@ -1,11 +1,11 @@
 # Data_Wrangling_NeuroMaster
 
-## Description\
-#### Is this workshop suited for you ? \
+## Description
+#### Is this workshop suited for you ? 
 This will (unfortunately) NOT be an introduction to programming. If you don't have any basic skills in programing (with either Matlab, Python or R), I suggest you take a look at the following tutorials links to start or improve your skills. These are all free class with active coding examples and exercises. \
 This also applies if you are proficient in (let's say) R and you would like to follow these series in Python. \
 
-#### Objective: \
+#### Objective: 
 The main goal of these workshop series is to create the oppurtunity for Neuroscience master students to improve their skills in data wrangling through active problem solving (with hints and guidelines) that are representative of 'real world' problems that one will probably encounter in cogntive/affective neuroscience research.  \
 A non exaustive list of skills/methods we are going to focus on: \
   - Code reproducibility (dynamic programming)
@@ -68,7 +68,7 @@ https://drive.switch.ch/index.php/s/pfo9GtrYiyKLk5x
 
 \
 
-## R: \
+## R: 
 
 #### Basics (online - free - active coding - videos)\
 https://learn.datacamp.com/courses/free-introduction-to-r
