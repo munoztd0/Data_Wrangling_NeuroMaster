@@ -84,7 +84,7 @@ https://campus.datacamp.com/courses/statistical-inference-and-data-analysis/
 ## Python: 
 
 #### Basics (online - free - active coding - videos) 
-https://learn.datacamp.com/courses/intro-to-python-for-data-science
+https://www.learnpython.org/en/
 
 #### Getting familiar with data wrangling and visualization (free - active coding - videos) 
 https://drive.switch.ch/index.php/s/qdbgPKqQ5xljYoA
