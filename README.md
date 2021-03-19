@@ -89,7 +89,7 @@ https://learn.datacamp.com/courses/intro-to-python-for-data-science
 #### Getting familiar with data wrangling and visualization (free - active coding - videos) 
 https://drive.switch.ch/index.php/s/qdbgPKqQ5xljYoA
 
-#### Getting familiar with data wrangling and visualization (online - free - active coding - videos) 
+#### Getting familiar with Machine Learning (free - active coding - videos) 
 https://drive.switch.ch/index.php/s/X6mlUhVvdQcEw6S
 
 #### Neuroimaging with Python (Nipy - FSL - AFNI - SPM) 
