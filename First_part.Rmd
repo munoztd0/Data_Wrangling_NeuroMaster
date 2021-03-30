@@ -2,7 +2,7 @@
 title: "Data wrangling workshop I for Neuroscience Master students"
 author: "David Munoz Tord"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
