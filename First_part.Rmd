@@ -2,7 +2,7 @@
 title: "Data wrangling workshop I for Neuroscience Master students"
 author: "David Munoz Tord"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -15,11 +15,17 @@ Make sure you have read the ReadMe file.
 
 ### A) Git basics
 Fork this repository https://github.com/munoztd0/Data_Wrangling_NeuroMaster onto your github page.
+
 Clone YOUR fork (e.g. git clone https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster inside a terminal)
-Open the test.txt file, add whatever you want e.g. "doneso") and save it.
-Now open up you terminal within the "Data_Wrangling_NeuroMaster" directory, and type :
-```{bash}
+Open the test.txt file, add whatever you want e.g. "doneso" or whatever) and save it.
+
+Open up you terminal within the "Data_Wrangling_NeuroMaster" directory, and type :
+
+```{r eval=FALSE}
 git add -A
-git commit -m "test"
+git commit -m "test" #or whatever
 git push 
 ```
+You will have to give you github usernam and password.
+
+Now go to your repository (again https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster) and check thhat the modifications
