@@ -199,16 +199,61 @@ summary {
 <div id="part-i" class="section level1">
 <h1>Part I</h1>
 <p>Make sure you have read the ReadMe file.</p>
+<p>If you are struggling I suggest you look at the “cheat sheet” documents and/or you just look it up on the internet.</p>
+<p>A huge part of being good at programing is knowing where/what to look for. I definitely encourage each of you to familiarize yourself with how to use search terms in google (<a href="https://www.dailyinfographic.com/how-to-become-a-google-power-user" class="uri">https://www.dailyinfographic.com/how-to-become-a-google-power-user</a>) or any other search engine and to look for answers in stack overflow.</p>
 <div id="a-git-basics" class="section level3">
 <h3>A) Git basics</h3>
-<p>Fork this repository <a href="https://github.com/munoztd0/Data_Wrangling_NeuroMaster" class="uri">https://github.com/munoztd0/Data_Wrangling_NeuroMaster</a> onto your github page.</p>
+<p>Fork this repository <a href="https://github.com/munoztd0/Data_Wrangling_NeuroMaster" class="uri">https://github.com/munoztd0/Data_Wrangling_NeuroMaster</a> onto your github page. You can also “star” it by clicking the little star icon so you will get informations about this workshop and comments from others.</p>
 <p>Clone YOUR fork (e.g. git clone <a href="https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster" class="uri">https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster</a> inside a terminal) Open the test.txt file, add whatever you want e.g. “doneso” or whatever) and save it.</p>
 <p>Open up you terminal within the “Data_Wrangling_NeuroMaster” directory, and type :</p>
 <pre class="r"><code>git add -A
 git commit -m &quot;test&quot; #or whatever
 git push </code></pre>
 <p>You will have to give you github usernam and password.</p>
-<p>Now go to your repository (again <a href="https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster" class="uri">https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster</a>) and check thhat the modifications</p>
+<p>Now go to your repository (again <a href="https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster" class="uri">https://github.com/YOURUSERNAME/Data_Wrangling_NeuroMaster</a>) and check thhat the modifications are there.</p>
+<p>That’s it first task done!</p>
+<p>Additional tip: If you are as lazy as I am sometimes (remember laziness WILL get you far in programing) you can add this function to your ~/.bash_profile or whatever your OS uses ro replace this three lines by one (e.g. lazygit).</p>
+<pre class="r"><code>function lazygit() {
+            git add .
+            git commit -a -m &quot;$1&quot;
+            git push
+            }</code></pre>
+</div>
+<div id="b-exercices" class="section level3">
+<h3>B) Exercices</h3>
+<p>Now that we are on point. Let’s actually start. First thing wil be to create a file that will contain the responses to this workshop’s exercises. The extension will of coursese depend on which languages you want to use (e.g. exercise.py, exercise.R, exercise.m, exercise.rmd, exercise.ipynb)</p>
+<p>I defintely recommend that you start familiarising yourself with Rmarkdown and Jupyter notebooks if you are not.</p>
+<div id="make-you-code-work-on-other-machines" class="section level4">
+<h4>1. Make you code work on other machines</h4>
+<p>An important thing that will make you and your coworkers save a ton of time and hassle is to make your code flexible and reproducible.</p>
+<p>This will take you a tiny bit more work but you will thank yourself later down the line.</p>
+<p>So the first thing will be to make the current path of your &quot;exercise.**&quot; file flexible. There are different ways to do that depending on which program you are using and how much flexibility you want but here a some cues on how to start you journey.</p>
+<p>For python:</p>
+<pre class="py"><code>import sys
+homepath = sys.path[0]</code></pre>
+<p>For R:</p>
+<pre class="r"><code>homepath = getwd()</code></pre>
+<p>For Matlab/Octave:</p>
+<pre class="octave"><code>homepath = mfilename(&#39;fullpath&#39;) %never use &quot;path&quot; as a variable because its a built-in function!</code></pre>
+<p>Now try to load the dataset “data.csv” using the “homepath” dynamic variable !</p>
+<p>Facultative: Try to make ALL your code work seemlessly on another computer with the same operating system you have (you can try to do that on your own machine but on a different user for example).</p>
+<p>Facultative HARD: Try to make ALL your code work seemlessly on another computer with the another operating system (OS) than yours (if you are on mac/linux try on windows and vice versa since mac/linux are oten really similar). To make your life easier (and impress you friends and supervisors) you might want to take a look at repoducible workflows such as <a href="https://github.com/aaronpeikert/repro" class="uri">https://github.com/aaronpeikert/repro</a> for R and <a href="https://swcarpentry.github.io/2014-01-31-ucsb/lessons/jk-python/reproducible_workflow.html" class="uri">https://swcarpentry.github.io/2014-01-31-ucsb/lessons/jk-python/reproducible_workflow.html</a> for Python.</p>
+<p>If you can’t get your hands on another OS you are encouraged to post an issue on this workshop’s github page so you guys can find a “partner” than can try your code and vice-versa. Alternatively, you can also create tiny virtual machines to try you code on different OS (more on that on <a href="https://www.virtualbox.org/" class="uri">https://www.virtualbox.org/</a>). Tip: windows is actually “free” for trying software so you can “skip” the license in the installation and it will still run.</p>
+</div>
+<div id="rearrange-the-data" class="section level4">
+<h4>2. Rearrange the data</h4>
+<p>First let’s just describe the dataset. This is a real dataset that I used but the measurment variables names have been removed and some of them have been “tweaked” for this workshop purpose to create real word issues. The experiment can be summarized by a 2x2 mixed design. 1 repeated (within) factorial variable with 2 levels (“pre” and “post”) and 1 group (between) factorial variable with 2 levels (“placebo” and “treatment”). Then there is a bunch of continuous variables those are biomedical variables of interest.</p>
+<p>However as you can see, this dataset is in “wide” format (var1_ses1, var1_ses2, …) instead of a “long” format, which is something that I often encounter. If you are not familiar with the terms I suggest you take a look here (<a href="https://discuss.analyticsvidhya.com/t/difference-between-wide-and-long-data-format/8110/2" class="uri">https://discuss.analyticsvidhya.com/t/difference-between-wide-and-long-data-format/8110/2</a>).</p>
+<p>Anyway here you will have first to transform this dataset from wide to long, this means thats we want 1 row per measurment (i.e. var1, var2,…, with a “session” column that either has a “pre” or “post” value).</p>
+<p>You could of course do it by hand, but that of course not why we are here.. So try to implement a way of doing so automatically.</p>
+</div>
+<div id="clean-the-data" class="section level4">
+<h4>3. Clean the data</h4>
+<p>But right now, our variables are in all sort of different scales and it’s impossible to compare apple to oranges. Plus since you don’t know what the variables are supposed to measure anyway, we will scale all variables (x - mean /sd). Like always try to implement a way of doing so for all avriables at once !</p>
+<p>Now that you have you nice long format standardized data you will want to visualize it. Visualizing data has always a subjective part but there are plenty of people that have created guidelines and rules to make it clearer for everybody, so take a look when you can (e.g. <a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a> or <a href="https://www.sigmacomputing.com/blog/7-best-practices-for-using-color-in-data-visualizations/" class="uri">https://www.sigmacomputing.com/blog/7-best-practices-for-using-color-in-data-visualizations/</a>) and try to think about it.</p>
+<p>Anyway, for now we will want to visualize the overall density of each variable (no matter which session or group) and the correlation between each pair of variable (pair plots). Again try to look for a way of doing so efficiently this might require a similar skim than just before for gathering variables per keys (this is a clue).</p>
+<p>What do you see ? Anything weird (e.g. outliers, correlations, densities) ? Write it down and we will discuss it.</p>
+</div>
 </div>
 </div>
 
