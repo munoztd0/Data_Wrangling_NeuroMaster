@@ -2,7 +2,13 @@
 title: "Data wrangling workshop I for Neuroscience Master students"
 author: "David Munoz Tord"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: html_document
+output:   
+  html_document:     
+    toc: true
+    toc_float: true
+    number_sections: false
+  pdf_document:
+    extra_dependencies: ["float"]
 ---
 
 ```{r setup, include=FALSE}
@@ -11,11 +17,12 @@ if(!require(pacman)) {
   install.packages("pacman")
   library(pacman)
 }
-pacman::p_load(reticulate)
+pacman::p_load(reticulate, R.matlab, sessioninfo) #reticulate for python and R.matlab for... Matlab
 use_virtualenv(virtualenv = "r-reticulate")
 ``` 
 
-# Part I
+# Data wrangling workshop for Neuroscience Master students - Part I
+This file was automatically created with Rmarkdown using `r session_info()$platform[1]`
 ![](./img/stack.jpg){style="float: left;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:400px;"}
 <br><br><br><br><br><br><br>
 Make sure you have read the ReadMe file.
@@ -30,7 +37,7 @@ If you are still struggling after that just try posting an issue on this github 
 
 
 
-### A) Git basics
+# Git basics
 ![](./img/git.png){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:250px;"}
 
 Fork [this repository](https://github.com/munoztd0/Data_Wrangling_NeuroMaster) onto your github page. You can also "star" it by clicking the little star icon so you will get informations about this workshop and comments from others.
@@ -70,7 +77,7 @@ function lazygit() {
 <br><br><br>
 
 
-### B) Exercices
+# Exercices
 Now that we are on point. Let's actually start. First thing wil be to create a file that will contain the responses to this workshop's exercises. The extension will of coursese depend on which languages you want to use (e.g. exercise.py, exercise.R, exercise.m, exercise.rmd, exercise.ipynb)
 
 I defintely recommend that you start familiarising yourself with Rmarkdown and Jupyter notebooks if you are not.
@@ -79,7 +86,7 @@ I defintely recommend that you start familiarising yourself with Rmarkdown and J
 ![](./img/my_machine.png){style="float: left;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:400px;"}
 <br><br>
 
-#### 1. Make you code work on other machines <br> 
+## 1) Make you code reproducible (AKA work on other machines) <br> 
 
 
 An important thing that will make you and your coworkers save a ton of time and hassle is to make your code flexible and reproducible.
@@ -87,25 +94,27 @@ An important thing that will make you and your coworkers save a ton of time and 
 This will take you a tiny bit more work but you will thank yourself later down the line. 
 
 So the first thing will be to make the current path of your "exercise.**" file flexible. There are different ways to do that depending on which program you are using and how much flexibility you want but here a some cues on how to start you journey.
-<br><br><br><br><br><br><br>
+<br><br><br>
 
-For python:
+### For python:
 ```{python}
 import os
 print(os.getcwd().strip('"\''))
 ```
-For R:
+
+### For R:
 ```{r}
 homepath = getwd()
 cat(homepath)
 ```
-For Matlab/Octave:
+
+### For Matlab/Octave:
 ```{octave}
 homepath = pwd;
 disp(homepath)
 ```
 
-Now try to load the dataset "data.csv" using the "homepath" dynamic variable !
+Now try to load the dataset "data/data.csv" using the "homepath" dynamic variable !
 
 In this vibe try to make ALL your code work seemlessly on another computer with the same operating system you have (you can try to do that on your own machine but on a different user for example). Especially make sure you scripts imports/downloads the functions/packages/libraries/modules you use in your script.    
 
@@ -116,26 +125,9 @@ In this vibe try to make ALL your code work seemlessly on another computer with 
 </center>
 <br>
 
-For R (put that a the beginning of your script):
-```{r eval=FALSE}
-if(!require(pacman)) {
-  install.packages("pacman")
-  library(pacman)
-}
-pacman::p_load(tidyr, afex)
-``` 
 
-For Python (do that within your terminal when you finished your scripts):
-It will automatically save module requirements in a ./requirements.txt file
-```{bash eval=FALSE}
-$ pip install pipreqs # install pipreqs on your machine
-$ pipreqs .  #run that in the directory where you have you script
-```
-Then someone can run "pip install -r requirements.txt" before running your script
 
-<br>
-
-Optional:
+### Optional:
 
 Try to make ALL your code work seemlessly on another computer with the another operating system (OS) than yours (if you are on mac/linux try on windows and vice versa since mac/linux are oten really similar). 
 
@@ -144,9 +136,28 @@ To make your life easier (and impress you colleagues and supervisors) you might 
 If you can't get your hands on another OS you are encouraged to post an issue on this workshop's github page so you guys can find a "partner" than can try your code and vice-versa.
 
 Alternatively, you can also create tiny virtual machines to try you code on different OS (more on that [here](https://www.virtualbox.org/)). Tip: windows is actually "free" for trying software so you can "skip" the license in the installation and it will still run.
-<br><br><br> 
 
-#### 2. Rearrange the data <br> 
+#### For R (put that a the beginning of your script):
+```{r eval=FALSE}
+if(!require(pacman)) {
+  install.packages("pacman")
+  library(pacman)
+}
+pacman::p_load(tidyr, R.matlab)
+``` 
+
+#### For Python (do that within your terminal when you finished your scripts):
+It will automatically save module requirements in a ./requirements.txt file
+```{bash eval=FALSE}
+$ pip install pipreqs # install pipreqs on your machine
+$ pipreqs .  #run that in the directory where you have you script
+```
+Then someone can run "pip install -r requirements.txt" before running your script
+
+
+<br><br>
+
+## 2) Rearrange the data <br> 
 
 ![](./img/pivot.jpg){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:450px;"}
 
@@ -164,7 +175,7 @@ You could of course do it by hand, but that of course not why we are here.. So t
 
 <br> <br> 
 
-#### 3. Plot the data <br> 
+## 3) Plot the data <br> 
 ![](./img/xkcd_viz.png){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:450px;"}
 
 But right now, our variables are in all sort of different scales and it's impossible to compare apple to oranges. Plus since you don't know what the variables are supposed to measure anyway, we will scale all variables (x - mean /sd). Like always try to implement a way of doing so for all avriables at once !
@@ -180,13 +191,13 @@ What do you see, anything weird (e.g. outliers, correlations, densities) ? Write
 
 <br>
 
-Optional:
+### Optional:
 
 Try to "clean" the dataset (e.g. remove outliers, log transform, etc..) as best as you think to be able to analyze the data based on the observations you did on the plots. Then maybe try to do an 2x2 anova (whatch out for the repeated measurment) on a problematic variable before and after you cleaned/transformed it. 
 
 <br><br>
 
-#### 4. Feature selection (optional but at least try to think about it)
+## 4) Feature selection (optional but at least try to think about it)
 
 ![](./img/machine_learning.png){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
 Let's say you want to test for the significance of the intervention variable (placebo VS treatment) on var1.
@@ -211,13 +222,79 @@ PS: No need to do the ANCOVA, the purpose of this exercise is really about wich 
 <br><br>
 
 
-#### 5. Preparing behavioral data for fMRI analysis
+## 5) Preparing behavioral data for fMRI analysis
 
 Now we are entering the realm of task-based functional MRI. We will defintely go more into details in a future workshop but let's just go through a bit of data wrangling anyone confronted to fMRI will have to go through.
 
-Let's start by downloading an [example dataset](https://drive.google.com/drive/folders/1vVW3jPfYdvh52juiHTUnkmY6bjvxZQcR)
-and install [dcm2niix[(https://github.com/rordenlab/dcm2niix) (this is just a tool to transform raw dicom (.dcm) files to niifti (.nii) with their metadata (.json)
+Let's start by loading the events associated to an fMRI acquisition. Here (in data/sub-control100/data.mat) is just an example of a typical file that you will have to extract from: the onsets (AKA when does the stuff you showed to your participant appeared), the durations (how long did it appear) and the behavioral (also generally called modulators) data associated to your task (e.g. reaction times or liking ratings for each condition). You WILL need these regressors to model you fMRI data later on.
 
+The thing is.. these files are generally (at least here in Geneva) generated for each participantin a .mat format. So that's whyI gave it to you hee like you probably get it in your lab too. If you don't feel concerned by that and your lab and moved on to python as its presentation software for fMRI, good for you and you might skip this. Otherwise this task might be quite instructive for you. So let's dive in.
+
+
+This files contain a matlab "structure array" which simply put is "a data type that groups related data using data containers called 'fields'. Each field can contain any type of data". This might be confusing at first (trust me .. it is) but so let's go step by step. This is a really simple design were we have only 3 odor conditions and the "start" of each trial.
+
+### For Matlab/Octave
+```{octave, comment=""}
+load('data/sub-control100/data.mat')  %loading data
+
+disp('Each structure has two fields named:'); disp(fieldnames(durations2))
+
+%to access the data in a field you must use dot notation (e.g. structName.fieldName)
+
+disp(['The "start" field contains ', num2str(length(durations2.start)), ' observattions'])
+disp('The "odor" field has 3 nested substructures named'); disp(fieldnames(durations2.odor))
+disp(['Each of the 3 nested substructure in the "odor" field contains ', num2str(length(durations2.odor.reward)), ' observattions'])
+```
+
+Now what we would like for most MRI softwares is a "3 column timming files" with respectively the onset time (in seconds); the duration (in seconds); the relative magnitude of each stimulus (set to 1 for none). I put examples of what it should look like in the /data folder.
+
+So basically the task will be to recreate that type of files for sub-01 and make you code easilly scale to more subjects (here is just duplicated the sub-01 into more subjects to test your code).
+
+
+Of course you are not forced to use matlab/octave here to achieve that.
+<br><br>
+![](./img/nest.jpeg){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
+
+### For python:
+```{python}
+import scipy.io
+mat = scipy.io.loadmat('data/sub-control100/data.mat')
+dict.keys(mat) #its read as a dictionnary so this gonna get ugly but stay with me
+#mat["modulators2"]["start"][0] #this gets you an array within an array !not good enough!  
+mat["modulators2"]["start"][0][0][0:2] #this actually get you the array (but remove the [0:2])
+#mat["modulators2"]["odor"]["control"][0][0] #this doesn't work!
+mat["modulators2"]["odor"][0][0]["control"][0][0][0:2] #you have to get you dictionnary from the array first ! (but remove the [0:2])
+```
+<br><br>
+![](./img/nestR.jpeg){style="float: left;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
+
+### For R:
+```{r, comment=""}
+library(R.matlab)
+mat <- readMat("data/sub-control100/data.mat")
+mat$modulators2  #check structure -> this a list
+head(mat$modulators2[[1]],2) #Accessing list number 1 (i.e "start")
+mat$modulators2[[2]] #Accessing list number 2 (i.e "odor") -> stil a list !
+head(mat$modulators2[[2]][[3]],2) #Accessing list number 3 (i.e "control") within embedded list number 1 (i.e "odor")
+#of course remove head(,2) here it'sjust for display purpose
+```
+### Optional:
+
+Try to create a dataset that includes each subjects behavioral dataset appended together with a column with their ID (numbers following control or treatment), a column with their group (control or treatment), a column with the condition name (reward, control or neutral) and 1 column with their behavioral data (from the modulators2.odor field) and a column with the number of the trial (1-54). Have extra caution to put the behavioral data back into the right order (you can get that by sorting them by their  onsets !). Hang in there..
+<br><br>
+
+## 6) The end
+
+![](./img/programmer.jpeg){style="float: left;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
+![](./img/brent.jpg){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
+<br><br>
+There you are, you finished this list of exercise. Good job! You deserve a pat on the shoulder and a good cup (jar?) of coffee.
+
+I hope you learned things that will be useful for your research/career and let me know whta you liked/disliked.
+
+
+
+<br>
 <br><br><br><br>
 Credit for all the comic goes to Randall Munroe
 
