@@ -2,6 +2,7 @@
 
 ## First Part
 [Click here](https://munoztd0.github.io/Data_Wrangling_NeuroMaster/)
+[zoom link for 2pm](https://unige.zoom.us/j/96247252194)
 
 
 ## Description
