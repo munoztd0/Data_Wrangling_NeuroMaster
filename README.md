@@ -4,6 +4,9 @@
 [Click here](https://munoztd0.github.io/Data_Wrangling_NeuroMaster/)
 
 
+[zoom link for 2pm](https://unige.zoom.us/j/96247252194)
+
+
 ## Description
 #### Is this workshop suited for you ? 
 This will (unfortunately) NOT be an introduction to programming. If you don't have any basic skills in programing (with either Matlab, Python or R), I suggest you take a look at the following tutorials links to start or improve your skills. These are all free class with active coding examples and exercises. 
