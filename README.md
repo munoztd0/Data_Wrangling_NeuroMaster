@@ -16,7 +16,7 @@ A non exaustive list of skills/methods we are going to focus on:
   - Code reproducibility (dynamic programming)
   - Code understandability (comments, style, Rmarkdown, Jupyter notebook)
   - Version control and code availability (github)
-  - Terminal familiarity
+  - Familiarity with a terminal
   - Automatisation (creating functions)
   - and of course Data wrangling and vizualisation
 
