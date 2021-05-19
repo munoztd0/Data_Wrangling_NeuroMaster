@@ -54,52 +54,5 @@ https://munoztd0.github.io/Hitchhikers_guide_to_the_brain/
 
 
 
-## Matlab or GNU Octave (free alternative to Matlab) : 
-
-#### Basics (online - free - active coding - videos) 
-https://www.mathworks.com/learn/tutorials/matlab-onramp.html
-
-
-#### Getting familiar with data wrangling and visualization (free - active coding - videos) 
-https://drive.switch.ch/index.php/s/ZYGtqDasSgNPo3b
-
-
-#### Transitioning from Matlab to Python (free - docs) 
-https://drive.switch.ch/index.php/s/dThUOtWJevWgsKz
-
-#### Transitioning from Matlab to R (free - docs) 
-https://drive.switch.ch/index.php/s/pfo9GtrYiyKLk5x
-
-
-
-## R: 
-
-#### Basics (online - free - active coding - videos)
-https://learn.datacamp.com/courses/free-introduction-to-r
-
-#### Getting familiar with data wrangling and visualization (online - free - active coding - videos)
-https://beanumber.github.io/sds192/schedule.html
-
-#### Basic statistical inference course  (online - free - active coding - videos)
-https://campus.datacamp.com/courses/statistical-inference-and-data-analysis/
-
-
-
-## Python: 
-
-#### Basics (online - free - active coding - videos) 
-https://www.learnpython.org/en/
-
-#### Getting familiar with data wrangling and visualization (free - active coding - videos) 
-https://drive.switch.ch/index.php/s/qdbgPKqQ5xljYoA
-
-#### Getting familiar with Machine Learning (free - active coding - videos) 
-https://drive.switch.ch/index.php/s/X6mlUhVvdQcEw6S
-
-#### Neuroimaging with Python (Nipy - FSL - AFNI - SPM) 
-https://github.com/NIDS2020-instructor?tab=repositories
-
-
-
 
 
