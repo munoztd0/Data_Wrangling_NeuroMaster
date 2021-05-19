@@ -1,7 +1,6 @@
 # Data_Wrangling_NeuroMaster
 
-## First Part
-[Click here](https://munoztd0.github.io/Data_Wrangling_NeuroMaster/)
+[Click here](https://munoztd0.github.io/Data_Wrangling_NeuroMaster/) to go the first part of the workshop
 
 
 
