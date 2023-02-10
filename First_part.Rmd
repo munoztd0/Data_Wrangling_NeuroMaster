@@ -3,8 +3,6 @@ title: "Data wrangling workshop I for Neuroscience Master students"
 author: "David Munoz Tord"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:   
-  pdf_document:
-    extra_dependencies: ["float"]
   html_document:     
     toc: true
     toc_float: true
@@ -17,12 +15,12 @@ if(!require(pacman)) {
   install.packages("pacman")
   library(pacman)
 }
-pacman::p_load(reticulate, R.matlab, sessioninfo) #reticulate for python and R.matlab for... Matlab
-use_virtualenv(virtualenv = "r-reticulate")
+#pacman::p_load(reticulate, R.matlab, sessioninfo) #reticulate for python and R.matlab for... Matlab
+#use_virtualenv(virtualenv = "r-reticulate")
 ``` 
 
 # Data wrangling workshop for Neuroscience Master students - Part I
-This file was automatically created with Rmarkdown using `r session_info()$platform[1]`
+This file was automatically created with Rmarkdown using `r sessioninfo::session_info()$platform[1]`
 ![](./img/stack.jpg){style="float: left;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:400px;"}
 <br><br><br><br><br><br><br>
 Make sure you have read the ReadMe file.
@@ -96,11 +94,11 @@ This will take you a tiny bit more work but you will thank yourself later down t
 So the first thing will be to make the current path of your "exercise.**" file flexible. There are different ways to do that depending on which program you are using and how much flexibility you want but here a some cues on how to start you journey.
 <br><br><br>
 
-### For python:
-```{python}
-import os
-print(os.getcwd().strip('"\''))
-```
+<!-- ### For python: -->
+<!-- ```{python} -->
+<!-- import os -->
+<!-- print(os.getcwd().strip('"\'')) -->
+<!-- ``` -->
 
 ### For R:
 ```{r}
@@ -108,11 +106,11 @@ homepath = getwd()
 cat(homepath)
 ```
 
-### For Matlab/Octave:
-```{octave}
-homepath = pwd;
-disp(homepath)
-```
+<!-- ### For Matlab/Octave: -->
+<!-- ```{octave} -->
+<!-- homepath = pwd; -->
+<!-- disp(homepath) -->
+<!-- ``` -->
 
 Now try to load the dataset "data/data.csv" using the "homepath" dynamic variable !
 
@@ -146,13 +144,13 @@ if(!require(pacman)) {
 pacman::p_load(tidyr, R.matlab)
 ``` 
 
-#### For Python (do that within your terminal when you finished your scripts):
-It will automatically save module requirements in a ./requirements.txt file
-```{bash eval=FALSE}
-$ pip install pipreqs # install pipreqs on your machine
-$ pipreqs .  #run that in the directory where you have you script
-```
-Then someone can run "pip install -r requirements.txt" before running your script
+<!-- #### For Python (do that within your terminal when you finished your scripts): -->
+<!-- It will automatically save module requirements in a ./requirements.txt file -->
+<!-- ```{bash eval=FALSE} -->
+<!-- $ pip install pipreqs # install pipreqs on your machine -->
+<!-- $ pipreqs .  #run that in the directory where you have you script -->
+<!-- ``` -->
+<!-- Then someone can run "pip install -r requirements.txt" before running your script -->
 
 
 <br><br>
@@ -233,18 +231,18 @@ The thing is.. these files are generally (at least here in Geneva) generated for
 
 This files contain a matlab "structure array" which simply put is "a data type that groups related data using data containers called 'fields'. Each field can contain any type of data". This might be confusing at first (trust me .. it is) but so let's go step by step. This is a really simple design were we have only 3 odor conditions and the "start" of each trial.
 
-### For Matlab/Octave
-```{octave, comment=""}
-load('data/sub-control100/data.mat')  %loading data
+<!-- ### For Matlab/Octave -->
+<!-- ```{octave, comment=""} -->
+<!-- load('data/sub-control100/data.mat')  %loading data -->
 
-disp('Each structure has two fields named:'); disp(fieldnames(durations2))
+<!-- disp('Each structure has two fields named:'); disp(fieldnames(durations2)) -->
 
-%to access the data in a field you must use dot notation (e.g. structName.fieldName)
+<!-- %to access the data in a field you must use dot notation (e.g. structName.fieldName) -->
 
-disp(['The "start" field contains ', num2str(length(durations2.start)), ' observations'])
-disp('The "odor" field has 3 nested substructures named'); disp(fieldnames(durations2.odor))
-disp(['Each of the 3 nested substructure in the "odor" field contains ', num2str(length(durations2.odor.reward)), ' observations'])
-```
+<!-- disp(['The "start" field contains ', num2str(length(durations2.start)), ' observations']) -->
+<!-- disp('The "odor" field has 3 nested substructures named'); disp(fieldnames(durations2.odor)) -->
+<!-- disp(['Each of the 3 nested substructure in the "odor" field contains ', num2str(length(durations2.odor.reward)), ' observations']) -->
+<!-- ``` -->
 
 Now what we would like for most MRI software is a "3 column timing files" with respectively the onset time (in seconds); the duration (in seconds); the relative magnitude of each stimulus (set to 1 for none). I put examples of what it should look like in the /data folder.
 
@@ -255,16 +253,16 @@ Of course you are not forced to use matlab/octave here to achieve that.
 <br><br>
 ![](./img/nest.jpeg){style="float: right;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
 
-### For python:
-```{python}
-import scipy.io
-mat = scipy.io.loadmat('data/sub-control100/data.mat')
-dict.keys(mat) #its read as a dictionary so this gonna get ugly but stay with me
-#mat["modulators2"]["start"][0] #this gets you an array within an array !not good enough!  
-mat["modulators2"]["start"][0][0][0:2] #this actually get you the array (but remove the [0:2])
-#mat["modulators2"]["odor"]["control"][0][0] #this doesn't work!
-mat["modulators2"]["odor"][0][0]["control"][0][0][0:2] #you have to get you dictionary from the array first ! (but remove the [0:2])
-```
+<!-- ### For python: -->
+<!-- ```{python} -->
+<!-- import scipy.io -->
+<!-- mat = scipy.io.loadmat('data/sub-control100/data.mat') -->
+<!-- dict.keys(mat) #its read as a dictionary so this gonna get ugly but stay with me -->
+<!-- #mat["modulators2"]["start"][0] #this gets you an array within an array !not good enough!   -->
+<!-- mat["modulators2"]["start"][0][0][0:2] #this actually get you the array (but remove the [0:2]) -->
+<!-- #mat["modulators2"]["odor"]["control"][0][0] #this doesn't work! -->
+<!-- mat["modulators2"]["odor"][0][0]["control"][0][0][0:2] #you have to get you dictionary from the array first ! (but remove the [0:2]) -->
+<!-- ``` -->
 <br><br>
 ![](./img/nestR.jpeg){style="float: left;margin-right: 7px; margin-left: 7px;margin-top: 7px; width:300px;"}
 
